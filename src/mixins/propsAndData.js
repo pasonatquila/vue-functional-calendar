@@ -158,6 +158,13 @@ export const propsAndData = {
     arrowsPosition: {
       type: String,
       default: 'space-between'
+    },
+    isYearFirst: {
+      type: Boolean,
+      default: false
+    },
+    yearFormatFunc: {
+      type: Function
     }
   },
   data() {
@@ -263,7 +270,10 @@ export const propsAndData = {
         isLayoutExpandable: false,
 
         titlePosition: 'center',
-        arrowsPosition: 'space-between'
+        arrowsPosition: 'space-between',
+
+        isYearFirst: false,
+        yearFormatFunc: year => year
       }
     }
   }

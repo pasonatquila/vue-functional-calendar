@@ -98,6 +98,7 @@
                     v-if="checkHiddenElement('month')"
                   >
                     <span
+                      v-if="!fConfigs.isYearFirst"
                       @click.prevent="
                         isNotSeparatelyAndFirst(key) && openMonthPicker(key + 1)
                       "
@@ -108,8 +109,8 @@
                         'vfc-underline-active': showMonthPicker === key + 1
                       }"
                     >
-                      {{ calendarItem.month }}</span
-                    >
+                      {{ calendarItem.month }}
+                    </span>
                     <span
                       @click.prevent="
                         isNotSeparatelyAndFirst(key) && openYearPicker(key + 1)
@@ -121,7 +122,21 @@
                         'vfc-underline-active': showYearPicker === key + 1
                       }"
                     >
-                      {{ calendarItem.year }}
+                      {{ fConfigs.yearFormatFunc ? fConfigs.yearFormatFunc(calendarItem.year) : calendarItem.year }}
+                    </span>
+                    <span
+                      v-if="fConfigs.isYearFirst"
+                      @click.prevent="
+                        isNotSeparatelyAndFirst(key) && openMonthPicker(key + 1)
+                      "
+                      :class="{
+                        'vfc-cursor-pointer vfc-underline':
+                          fConfigs.changeMonthFunction &&
+                          isNotSeparatelyAndFirst(key),
+                        'vfc-underline-active': showMonthPicker === key + 1
+                      }"
+                    >
+                      {{ calendarItem.month }}
                     </span>
                   </div>
                 </transition>
