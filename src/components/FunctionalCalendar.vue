@@ -1,5 +1,5 @@
 <template>
-  <div class="vfc-popover-container" ref="popoverElement" tabindex="0">
+  <div class="vfc-popover-container" ref="popoverElement" :tabindex="this.focusable ? 0 : -1">
     <PickerInputs
       :fConfigs="fConfigs"
       :singleSelectedDate="singleSelectedDate"

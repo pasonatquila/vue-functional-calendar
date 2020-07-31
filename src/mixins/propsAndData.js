@@ -165,6 +165,10 @@ export const propsAndData = {
     },
     yearFormatFunc: {
       type: Function
+    },
+    focusable: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
